@@ -12,3 +12,5 @@ if c % 2 == 0:
     print("O resultado é par.")
 else:
     print("O resultado é ímpar.")
+
+print('Bora buscar!')
