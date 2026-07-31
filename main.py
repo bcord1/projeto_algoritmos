@@ -36,9 +36,9 @@ def pre_processar(imagem):
     return binaria
 
 
-def extrair_texto(imagem_processada):
-    config = r"--oem 3 --psm 6"
-    texto = pytesseract.image_to_string(imagem_processada, lang = "por", config = config)
+def extrair_texto(imagem_tratada):
+    config = "--oem 3 --psm 6"
+    texto = pytesseract.image_to_string(imagem_tratada, lang = "por", config = config)
     return texto
 
 
