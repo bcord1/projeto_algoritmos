@@ -38,4 +38,6 @@ def sistema():
             pass
         # return listarRemedios()
         if opc == 3:
-            return print("Encerrando ... Volte sempre.")
+            return print("Encerrando ... Volte sempre.")            return print("Encerrando ... Volte sempre.")
+        #return fecharPrograma()
+        #feito no arquivo 'database'
