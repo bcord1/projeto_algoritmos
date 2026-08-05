@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./Funcoes/Leitura e Processamento",
+        "./Funcoes/Interface"
+    ]
+}

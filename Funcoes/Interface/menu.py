@@ -1,3 +1,5 @@
+from processamento import processar_receita
+
 cores = {
 "vermelho":"\033[31m",
 "verde":"\033[32m",
@@ -28,14 +30,18 @@ def menu():
     linha()
     
 def sistema():
-    menu()
+    
     while True:
+        menu()
         opc = int(input("O que deseja ? "))
         if opc == 1:
-            pass
-        #parte do nosso mano bento
-        if opc == 2:
-            pass
-        # return listarRemedios()
-        if opc == 3:
+
+            return processar_receita()
+        elif opc == 2:
+            #parte de gugu 
+            return print('')
+           
+        elif opc == 3:
             return print("Encerrando ... Volte sempre.")
+
+sistema()
