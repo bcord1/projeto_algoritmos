@@ -1,15 +1,5 @@
 import re
-
-from config import padrao_crm_uf, padrao_medicamento, padrao_medico
-
-
-def extrair_medico(texto):
-    match = padrao_medico.search(texto)
-    if match:
-        nome = match.group(1).strip()
-        nome = re.sub(r"\s{2,}", " ", nome)
-        return nome
-    return None
+from config import padrao_crm_uf, padrao_medicamento
 
 
 def extrair_crm_uf(texto):
@@ -29,11 +19,11 @@ def extrair_medicamentos(texto):
             continue
         m = padrao_medicamento.match(linha_limpa)
         if m:
-            nome = m.group("nome").strip(" _.")
+            nome = m.group("nome_do_medicamento").strip(" _.")
             quantidade = int(m.group("quantidade"))
             unidade = m.group("unidade").lower()
             medicamentos.append({
-                "nome": nome,
+                "nome_do_medicamento": nome,
                 "quantidade": quantidade,
                 "unidade": unidade
             })
@@ -41,12 +31,10 @@ def extrair_medicamentos(texto):
 
 
 def extrair_dados_receita(texto):
-    nome_medico = extrair_medico(texto)
     crm, uf = extrair_crm_uf(texto)
     medicamentos = extrair_medicamentos(texto)
  
     return {
-        "medico": nome_medico,
         "crm": crm,
         "uf": uf,
         "medicamentos": medicamentos
