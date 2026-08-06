@@ -1,7 +1,8 @@
 from Funcoes.Interface.menu import sistema, encerramento, deseja_continuar
-from Funcoes.BD.database import listarMedicamentos, fecharBanco
+from Funcoes.BD.criar_medicamentos import listarMedicamentos, fecharBanco
 from Funcoes.Leitura_Processamento.processamento import processar_receita
 from Funcoes.BD.medicos import validar_medico
+from Funcoes.BD.medicamentos import verificar_medicamentos
 
 
 executando = True
@@ -12,13 +13,26 @@ while executando:
     if opc == 1:
         dados_receita = processar_receita()
         if dados_receita:
-            valido = validar_medico(
+            medico_valido = validar_medico(
                 dados_receita["crm"],
                 dados_receita["uf"]
             )
 
-            if valido:
-                print('Receita válida')
+            if medico_valido:
+                remedio_valido = verificar_medicamentos(
+                    dados_receita["medicamentos"]
+                )
+
+                if remedio_valido:
+                    print('Todos os medicamentos foram encontrados.')
+
+                else:
+                    print('Foram encontrados medicamentos não cadastrados.')
+                    if not deseja_continuar():
+                        encerramento()
+                        fecharBanco()
+                        executando = False
+
             else:
                 print('Receita inválida')
                 if not deseja_continuar():

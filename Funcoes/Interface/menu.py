@@ -1,5 +1,5 @@
 from time import sleep
-from Funcoes.BD.database import fecharBanco
+from Funcoes.BD.criar_medicamentos import fecharBanco
 cores = {
 "vermelho":"\033[31m",
 "verde":"\033[32m",

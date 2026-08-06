@@ -7,7 +7,7 @@ caminho_banco = Path(__file__).parent / "medicamentos.db"
 medicamentos = sqlite3.connect(caminho_banco)
 
 cursor = medicamentos.cursor()
-cursor.execute("CREATE TABLE IF NOT EXISTS medicamentos (id INTEGER PRIMARY KEY AUTOINCREMENT,nome TEXT NOT NULL UNIQUE)")
+cursor.execute("CREATE TABLE IF NOT EXISTS medicamentos (id INTEGER PRIMARY KEY AUTOINCREMENT,nome TEXT NOT NULL UNIQUE, quantidade INTEGER NOT NULL)")
 
 medicamentosAdicionados = [
     "Tylenol 500mg",
@@ -51,8 +51,8 @@ medicamentosAdicionados = [
 ]
 
 cursor.executemany(
-    "INSERT OR IGNORE INTO medicamentos (nome) VALUES (?)",
-    [(medicamento,) for medicamento in medicamentosAdicionados]
+    "INSERT OR IGNORE INTO medicamentos (nome, quantidade) VALUES (?, 50)",
+    [(medicamento,) for medicamento in medicamentosAdicionados],
 )
 
 medicamentos.commit()
