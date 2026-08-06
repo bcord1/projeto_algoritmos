@@ -1,4 +1,5 @@
 from time import sleep
+from Funcoes.BD.database import fecharBanco
 cores = {
 "vermelho":"\033[31m",
 "verde":"\033[32m",
@@ -62,4 +63,17 @@ def encerramento():
         print('.', end = '', flush = True)
     print('\nAté logo!')
 
-    
+def deseja_continuar():
+    try:
+        continuar = input('Deseja continuar? [S/N] ').strip().upper()
+    except(TypeError):
+        print('Entrada inválida.')
+    except(KeyboardInterrupt):
+        print('Digite alguma opção.')
+    else:
+        if continuar == 'S':
+            return True
+        elif continuar == 'N':
+            return False
+        else:
+            print('Opção inválida, digite S ou N.')
