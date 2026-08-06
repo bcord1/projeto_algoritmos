@@ -1,3 +1,4 @@
+from time import sleep
 cores = {
 "vermelho":"\033[31m",
 "verde":"\033[32m",
@@ -46,17 +47,19 @@ def sistema():
     print(f"{cores["limpa"]}",end="")
     menu()
     while True:
-        opc = int(input(f"{cores["verde"]}Sua Opção: {cores["limpa"]}"))
+        opc = leiaInt('Sua Opção: ')
         linha()
-        if opc == 1:
-            pass
-        #parte do nosso mano bento
-        elif opc == 2:
-            pass
-        # return listarRemedios()
-        elif opc == 3:
-            return print(f"{cores["ciano"]}Encerrando... Volte sempre.{cores["limpa"]}")
-            #return database.fecharPrograma()
-        #feito no arquivo 'database'
-        else:
-            print(f"{cores["vermelho"]}Opção Inválida! Tente novamente.{cores["limpa"]}")
+
+        if opc in (1, 2, 3):
+            return opc
+
+        print(f"{cores["vermelho"]}Opção Inválida! Tente novamente.{cores["limpa"]}")
+
+def encerramento():
+    print('Finalizando o sistema', end ='', flush = True)
+    for n in range(3):
+        sleep(1)
+        print('.', end = '', flush = True)
+    print('\nAté logo!')
+
+    

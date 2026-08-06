@@ -1,30 +1,53 @@
 import sqlite3
-medicamentos = sqlite3.connect('medicamentos.db')
+from pathlib import Path
+
+caminho_banco = Path(__file__).parent / "medicamentos.db" 
+#Abre o arquivo medicamentos.db no diretório atual de execução do Python
+
+medicamentos = sqlite3.connect(caminho_banco)
 
 cursor = medicamentos.cursor()
 cursor.execute("CREATE TABLE IF NOT EXISTS medicamentos (id INTEGER PRIMARY KEY AUTOINCREMENT,nome TEXT NOT NULL UNIQUE)")
 
 medicamentosAdicionados = [
-    "Tylenol",
-    "Novalgina",
-    "Dorflex",
-    "Cataflam",
-    "Voltaren",
-    "Buscopan",
-    "Buscopan Composto",
-    "Aspirina",
-    "Benegrip",
-    "Amoxil",
-    "Augmentin",
-    "Glifage",
-    "Losartan",
-    "Norvasc",
-    "Lipitor",
-    "Plasil",
-    "Luftal",
-    "Nexium",
-    "Puran T4",
-    "Rivotril"
+    "Tylenol 500mg",
+    "Tylenol 750mg",
+    "Novalgina 500mg",
+    "Dorflex 300mg",
+    "Cataflam 25mg",
+    "Cataflam 50mg",
+    "Voltaren 50mg",
+    "Voltaren 75mg",
+    "Buscopan 10mg",
+    "Buscopan Composto 10mg",
+    "Aspirina 100mg",
+    "Aspirina 500mg",
+    "Benegrip 400mg",
+    "Amoxil 250mg",
+    "Amoxil 500mg",
+    "Amoxil 875mg",
+    "Augmentin 500mg",
+    "Augmentin 875mg",
+    "Glifage 500mg",
+    "Glifage 850mg",
+    "Glifage 1g",
+    "Losartan 25mg",
+    "Losartan 50mg",
+    "Losartan 100mg",
+    "Norvasc 5mg",
+    "Norvasc 10mg",
+    "Lipitor 10mg",
+    "Lipitor 20mg",
+    "Lipitor 40mg",
+    "Plasil 10mg",
+    "Luftal 40mg",
+    "Luftal 75mg",
+    "Nexium 20mg",
+    "Nexium 40mg",
+    "Puran T4 50mcg",
+    "Puran T4 100mcg",
+    "Rivotril 0,5mg",
+    "Rivotril 2mg"
 ]
 
 cursor.executemany(
@@ -40,6 +63,5 @@ def listarMedicamentos():
     for linha in resultados:
         print(linha)
 
-def fecharPrograma():
-    print("Até logo!\n\nEncerrando programa...")
-    return medicamentos.close()
+def fecharBanco():
+    medicamentos.close()
