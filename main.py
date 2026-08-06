@@ -1,5 +1,6 @@
 from Funcoes.Interface.menu import sistema, encerramento
 from Funcoes.BD.database import listarMedicamentos, fecharBanco
+from Funcoes.Leitura_Processamento.processamento import processar_receita
 
 
 executando = True
@@ -8,8 +9,8 @@ while executando:
     opc = sistema()
 
     if opc == 1:
-        print('a')
-
+        dados_receita = processar_receita()
+        print(dados_receita)
         
     elif opc == 2:
         listarMedicamentos()

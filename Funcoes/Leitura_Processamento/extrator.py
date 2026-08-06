@@ -1,5 +1,5 @@
 import re
-from config import padrao_crm_uf, padrao_medicamento
+from .config import padrao_crm_uf, padrao_medicamento
 
 
 def extrair_crm_uf(texto):

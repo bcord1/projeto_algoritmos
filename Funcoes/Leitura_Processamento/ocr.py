@@ -2,7 +2,7 @@ import cv2
 import pytesseract
 from tkinter.filedialog import askopenfilename
 
-from config import Tesseract_cmd
+from .config import Tesseract_cmd
 
 
 pytesseract.pytesseract.tesseract_cmd = Tesseract_cmd
