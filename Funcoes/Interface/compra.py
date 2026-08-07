@@ -51,3 +51,13 @@ def definir_quantidades(medicamentos_escolhidos):
             else:
                 print('Quantidade requisitada indisponível.')
     return compra
+
+def mostrar_resumo(compra_total):
+    print("Resumo da compra: ")
+    for indice, medicamento in enumerate(compra_total, start=1):
+        print(
+            f'{indice} - {medicamento["nome_do_medicamento"]}'
+        )
+        print(
+            f'Quantidade: {medicamento["quantidade"]}'
+        )

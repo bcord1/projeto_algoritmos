@@ -1,5 +1,5 @@
 from Funcoes.Interface.menu import sistema, encerramento, deseja_continuar
-from Funcoes.Interface.compra import selecionar_medicamentos, definir_quantidades
+from Funcoes.Interface.compra import selecionar_medicamentos, definir_quantidades, mostrar_resumo
 from Funcoes.BD.criar_medicamentos import listarMedicamentos, fecharBanco
 from Funcoes.Leitura_Processamento.processamento import processar_receita
 from Funcoes.BD.medicos import validar_medico
@@ -7,6 +7,7 @@ from Funcoes.BD.medicamentos import verificar_medicamentos
 
 
 executando = True
+compra_total = []
 
 while executando: 
     opc = sistema()
@@ -33,6 +34,10 @@ while executando:
                         compra = definir_quantidades(
                             medicamentos_escolhidos
                         )
+                        compra_total.extend(compra)
+
+                        if not deseja_continuar():
+                            executando = False
 
                 else:
                     print('Foram encontrados medicamentos não cadastrados.')
@@ -50,7 +55,7 @@ while executando:
         
     elif opc == 2:
         listarMedicamentos()
-        o = deseja_continuar()
+        
         if not deseja_continuar():
             encerramento()
             fecharBanco()
@@ -60,3 +65,8 @@ while executando:
         encerramento()
         fecharBanco()
         executando = False
+
+if compra_total:
+    mostrar_resumo(compra_total)
+else:
+    print('Nenhum medicamento foi comprado.')
