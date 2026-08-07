@@ -22,3 +22,22 @@ def verificar_medicamentos(medicamentos_receita):
             return False
     conexao.close()
     return True
+
+def verificar_estoque(nome, quantidade):
+    conexao = sqlite3.connect(caminho_medicamento)
+    cursor = conexao.cursor()
+    cursor.execute("""
+        SELECT quantidade FROM medicamentos
+        WHERE nome = ?
+    """, (nome,))
+
+    resultado = cursor.fetchone()
+    if resultado is None:
+        return False
+
+    estoque = resultado[0]
+
+    if estoque >= quantidade:
+        return True
+    else:
+        return False

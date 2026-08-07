@@ -1,4 +1,5 @@
 from Funcoes.Interface.menu import sistema, encerramento, deseja_continuar
+from Funcoes.Interface.compra import selecionar_medicamentos, definir_quantidades
 from Funcoes.BD.criar_medicamentos import listarMedicamentos, fecharBanco
 from Funcoes.Leitura_Processamento.processamento import processar_receita
 from Funcoes.BD.medicos import validar_medico
@@ -24,7 +25,14 @@ while executando:
                 )
 
                 if remedio_valido:
-                    print('Todos os medicamentos foram encontrados.')
+                    medicamentos_escolhidos = selecionar_medicamentos(
+                        dados_receita["medicamentos"]
+                    )
+
+                    if medicamentos_escolhidos:
+                        compra = definir_quantidades(
+                            medicamentos_escolhidos
+                        )
 
                 else:
                     print('Foram encontrados medicamentos não cadastrados.')
