@@ -1,9 +1,9 @@
 from Funcoes.Interface.menu import sistema, encerramento, deseja_continuar
-from Funcoes.Interface.compra import selecionar_medicamentos, definir_quantidades, mostrar_resumo
+from Funcoes.Interface.compra import selecionar_medicamentos, definir_quantidades, mostrar_resumo, confirmar_compra
 from Funcoes.BD.criar_medicamentos import listarMedicamentos, fecharBanco
 from Funcoes.Leitura_Processamento.processamento import processar_receita
 from Funcoes.BD.medicos import validar_medico
-from Funcoes.BD.medicamentos import verificar_medicamentos
+from Funcoes.BD.medicamentos import verificar_medicamentos, baixar_estoque
 
 
 executando = True
@@ -68,5 +68,10 @@ while executando:
 
 if compra_total:
     mostrar_resumo(compra_total)
+    if confirmar_compra():
+        baixar_estoque(compra_total)
+        print('Compra efetuada com sucesso!')
+    else: 
+        print('Compra cancelada.')
 else:
     print('Nenhum medicamento foi comprado.')

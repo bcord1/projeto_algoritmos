@@ -61,3 +61,19 @@ def mostrar_resumo(compra_total):
         print(
             f'Quantidade: {medicamento["quantidade"]}'
         )
+
+def confirmar_compra():
+    loop = True
+    print('Deseja confirmar a compra dos remédios selecionados? ')
+    print('"S" para confirmar \n"N" para recusar ')
+    while loop:
+        try:
+            opc = input('Sua opção: ').strip().upper()
+            if opc == 'S':
+                return True
+            elif opc == 'N':
+                return False
+            else:
+                print('Entrada inválida. Tente novamente.')
+        except(KeyboardInterrupt):
+            print('Escolha uma opção, por favor.')

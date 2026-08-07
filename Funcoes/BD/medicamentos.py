@@ -41,3 +41,19 @@ def verificar_estoque(nome, quantidade):
         return True
     else:
         return False
+
+def baixar_estoque(compratotal):
+    conexao = sqlite3.connect(caminho_medicamento)
+    cursor = conexao.cursor()
+
+    for medicamento in compratotal:
+        nome = medicamento["nome_do_medicamento"]
+        quantidade = medicamento["quantidade"]
+        cursor.execute("""
+            UPDATE medicamentos
+            SET quantidade = quantidade - ?
+            WHERE nome = ?
+        """, (quantidade, nome))
+
+    conexao.commit()
+    conexao.close()
