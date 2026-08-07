@@ -8,7 +8,7 @@ def extrair_crm_uf(texto):
         uf = match.group(1).upper()
         crm = match.group(2)
         return crm, uf
-    return None, None
+    return False, False
  
  
 def extrair_medicamentos(texto):

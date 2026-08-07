@@ -71,11 +71,11 @@ def deseja_continuar():
         except(TypeError):
             print('Entrada inválida.')
         except(KeyboardInterrupt):
-            print('Digite alguma opção.')
+            print('Digite alguma opção válida!')
         else:
             if continuar == 'S':
                 return True
             elif continuar == 'N':
                 return False
             else:
-                print('Opção inválida, digite S ou N.')
+                print('Opção inválida! Digite S ou N.')
