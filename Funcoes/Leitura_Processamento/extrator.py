@@ -19,7 +19,7 @@ def extrair_medicamentos(texto):
             continue
         m = padrao_medicamento.match(linha_limpa)
         if m:
-            nome = m.group("nome_do_medicamento").strip(" _.")
+            nome = m.group("nome_do_medicamento").strip(" _.").upper()
             quantidade = int(m.group("quantidade"))
             unidade = m.group("unidade").lower()
             medicamentos.append({
