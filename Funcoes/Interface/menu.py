@@ -67,7 +67,7 @@ def deseja_continuar():
     loop = True
     while loop:
         try:
-            continuar = input('Deseja continuar? [S/N] ').strip().upper()
+            continuar = input('\nDeseja continuar? [S/N] ').strip().upper()
         except(TypeError):
             print('Entrada inválida.')
         except(KeyboardInterrupt):

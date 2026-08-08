@@ -17,9 +17,27 @@ def verificar_medicamentos(medicamentos_receita):
 
         resultado = cursor.fetchone()
 
-        if resultado is None:
+        while resultado is None:
             print(f'{nome} não encontrado.')
-            return False
+            novo_nome = input("Digite o nome do remédio manualmente (ou deixe em branco para cancelar): ").strip().upper()
+
+            if not novo_nome:
+                conexao.close()
+                return False
+
+            cursor.execute("""
+                        SELECT * FROM medicamentos
+                        WHERE nome = ?
+                    """, (novo_nome, ))
+            
+            resultado = cursor.fetchone()
+
+            if resultado is None:
+                print(f'{novo_nome} não encontrado.')
+            else:
+                medicamento["nome_do_medicamento"] = novo_nome
+                nome = novo_nome
+                
     conexao.close()
     return True
 

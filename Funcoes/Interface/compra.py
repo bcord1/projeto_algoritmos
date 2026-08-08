@@ -14,10 +14,10 @@ def leiaInt(msg):
 
 def selecionar_medicamentos(medicamentos_receita):
     for indice, medicamento in enumerate(medicamentos_receita, start=1):
-        print (indice, medicamento["nome_do_medicamento"])
+        print (f'{indice} - {medicamento["nome_do_medicamento"]}')
     print('0 - Não quero comprar nenhum medicamento.')
 
-    escolha = input("Digite os medicamentos")
+    escolha = input("\nDigite o(s) índice(s) do(s) medicamento(s) que deseja comprar: ")
     escolhas = [int(x) for x in escolha.split()]
 
     if escolhas == [0]:
@@ -36,7 +36,7 @@ def definir_quantidades(medicamentos_escolhidos):
     for medicamento in medicamentos_escolhidos:
         loop = True
         while loop: 
-            opcao = leiaInt(f'Quantas unidades de {medicamento["nome_do_medicamento"]} serão compradas?')
+            opcao = leiaInt(f'\nQuantas unidades de {medicamento["nome_do_medicamento"]} serão compradas? ')
             tem_estoque = verificar_estoque(
                 medicamento["nome_do_medicamento"],
                 opcao
