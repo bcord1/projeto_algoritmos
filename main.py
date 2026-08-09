@@ -1,4 +1,4 @@
-from Funcoes.Interface.menu import sistema, encerramento, deseja_continuar
+from Funcoes.Interface.menu import sistema, encerramento, deseja_continuar, decidir_apos_quantidade
 from Funcoes.Interface.compra import selecionar_medicamentos, definir_quantidades, mostrar_resumo, confirmar_compra
 from Funcoes.BD.criar_medicamentos import listarMedicamentos, fecharBanco
 from Funcoes.Leitura_Processamento.processamento import processar_receita
@@ -21,6 +21,7 @@ while executando:
             )
 
             if medico_valido:
+                print("\nReceita Válida\n")
                 remedio_valido = verificar_medicamentos(
                     dados_receita["medicamentos"]
                 )
@@ -36,7 +37,7 @@ while executando:
                         )
                         compra_total.extend(compra)
 
-                        if not deseja_continuar():
+                        if not decidir_apos_quantidade():
                             executando = False
 
                 else:
@@ -47,7 +48,7 @@ while executando:
                         executando = False
 
             else:
-                print('Receita inválida')
+                print('Receita Inválida')
                 if not deseja_continuar():
                     encerramento()
                     fecharBanco()

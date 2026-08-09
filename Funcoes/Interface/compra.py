@@ -36,7 +36,8 @@ def definir_quantidades(medicamentos_escolhidos):
     for medicamento in medicamentos_escolhidos:
         loop = True
         while loop: 
-            opcao = leiaInt(f'\nQuantas unidades de {medicamento["nome_do_medicamento"]} serão compradas? ')
+            opcao = leiaInt(f'\nQuantas unidades de {medicamento["nome_do_medicamento"]} serão compradas? '
+                            f'(Qntd. na receita: {medicamento["quantidade"]} {medicamento["unidade"]}) ')
             tem_estoque = verificar_estoque(
                 medicamento["nome_do_medicamento"],
                 opcao

@@ -79,3 +79,16 @@ def deseja_continuar():
                 return False
             else:
                 print('Opção inválida, digite S ou N.')
+
+def decidir_apos_quantidade():
+    linha()
+    print('1 - Ir para o menu e adicionar outra receita à compra')
+    print('2 - Finalizar a compra atual')
+    linha()
+    while True:
+        opcao = leiaInt('Sua opção: ')
+        if opcao == 1:
+            return True
+        elif opcao == 2:
+            return False
+        print(f'{cores["vermelho"]}Opção Inválida! Tente Novamente.{cores["limpa"]}')
