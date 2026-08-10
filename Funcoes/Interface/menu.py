@@ -88,7 +88,9 @@ def decidir_apos_quantidade():
     while True:
         opcao = leiaInt('Sua opção: ')
         if opcao == 1:
+            print()
             return True
         elif opcao == 2:
+            linha()
             return False
         print(f'{cores["vermelho"]}Opção Inválida! Tente Novamente.{cores["limpa"]}')

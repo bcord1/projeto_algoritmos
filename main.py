@@ -1,4 +1,4 @@
-from Funcoes.Interface.menu import sistema, encerramento, deseja_continuar, decidir_apos_quantidade
+from Funcoes.Interface.menu import sistema, encerramento, deseja_continuar, decidir_apos_quantidade, cores
 from Funcoes.Interface.compra import selecionar_medicamentos, definir_quantidades, mostrar_resumo, confirmar_compra
 from Funcoes.BD.criar_medicamentos import listarMedicamentos, fecharBanco
 from Funcoes.Leitura_Processamento.processamento import processar_receita
@@ -21,7 +21,7 @@ while executando:
             )
 
             if medico_valido:
-                print("\nReceita Válida\n")
+                print(f'{cores["verde"]}\nReceita Válida\n{cores["limpa"]}')
                 remedio_valido = verificar_medicamentos(
                     dados_receita["medicamentos"]
                 )
@@ -48,7 +48,7 @@ while executando:
                         executando = False
 
             else:
-                print('Receita Inválida')
+                print(f'{cores["vermelho"]}\nReceita Inválida{cores["limpa"]}')
                 if not deseja_continuar():
                     encerramento()
                     fecharBanco()
@@ -63,16 +63,17 @@ while executando:
             executando = False
 
     elif opc == 3:
-        encerramento()
-        fecharBanco()
         executando = False
 
 if compra_total:
     mostrar_resumo(compra_total)
     if confirmar_compra():
         baixar_estoque(compra_total)
-        print('Compra efetuada com sucesso!')
+        print(f'{cores["verde"]}\nCompra efetuada com sucesso!{cores["limpa"]}')
     else: 
-        print('Compra cancelada.')
+        print(f'{cores["vermelho"]}\nCompra cancelada!{cores["limpa"]}')
 else:
     print('Nenhum medicamento foi comprado.')
+
+fecharBanco()
+encerramento()

@@ -1,5 +1,6 @@
 import sqlite3
 from pathlib import Path
+from Funcoes.Interface.menu import cores
 
 caminho_medicamento = Path(__file__).parent / "medicamentos.db"
 
@@ -18,7 +19,7 @@ def verificar_medicamentos(medicamentos_receita):
         resultado = cursor.fetchone()
 
         while resultado is None:
-            print(f'{nome} não encontrado.')
+            print(f'{cores["vermelho"]}{nome} não encontrado.{cores["limpa"]}')
             novo_nome = input("Digite o nome do remédio manualmente (ou deixe em branco para cancelar): ").strip().upper()
 
             if not novo_nome:
@@ -33,7 +34,7 @@ def verificar_medicamentos(medicamentos_receita):
             resultado = cursor.fetchone()
 
             if resultado is None:
-                print(f'{novo_nome} não encontrado.')
+                print(f'{cores["vermelho"]}{novo_nome} não encontrado.{cores["limpa"]}\n')
             else:
                 medicamento["nome_do_medicamento"] = novo_nome
                 nome = novo_nome
