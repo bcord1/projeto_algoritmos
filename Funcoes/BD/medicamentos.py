@@ -1,5 +1,6 @@
 import sqlite3
 from pathlib import Path
+from Funcoes.Interface.menu import leiaInt
 
 caminho_medicamento = Path(__file__).parent / "medicamentos.db"
 
@@ -22,6 +23,40 @@ def verificar_medicamentos(medicamentos_receita):
             return False
     conexao.close()
     return True
+
+def buscar_medicamento_nome():
+    conexao = sqlite3.connect(caminho_medicamento)
+    cursor = conexao.cursor()
+    nome_busca = input("Digite o nome do medicamento: ")
+    cursor.execute("""
+        SELECT nome FROM medicamentos 
+        WHERE nome = ?
+    """, (nome_busca,))
+    medicamento = cursor.fetchone()
+
+    if medicamento:
+        conexao.close()
+        return f"Medicamento encontrado!/n {medicamento[1]}"
+
+    conexao.close()
+    return 'Não possuímos este medicamento no estoque!'
+
+def buscar_medicamento_id():
+    conexao = sqlite3.connect(caminho_medicamento)
+    cursor = conexao.cursor()
+
+    id_busca = leiaInt("Digite o ID do medicamento: ")
+    cursor.execute("""
+        SELECT nome FROM medicamentos WHERE id = ?
+        """, (id_busca,))
+
+    medicamento = cursor.fetchone()
+
+    if medicamento:
+        conexao.close()
+        return f"Medicamento encontrado!/n {medicamento[0]}"
+    conexao.close()
+    return 'Não possuímos este medicamento no estoque!'
 
 def verificar_estoque(nome, quantidade):
     conexao = sqlite3.connect(caminho_medicamento)

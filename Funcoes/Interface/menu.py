@@ -1,5 +1,5 @@
 from time import sleep
-from Funcoes.BD.criar_medicamentos import fecharBanco
+from Funcoes.BD.medicamentos import buscar_medicamento_nome, buscar_medicamento_id
 cores = {
 "vermelho":"\033[31m",
 "verde":"\033[32m",
@@ -35,7 +35,8 @@ def menu():
     opcoes = {
     "1":"Ler receita",
     "2":"Analisar medicações",
-    "3":"Sair"
+    "3":"Buscar medicamento",
+    "4":"Sair"
     }
    
     for k, v in opcoes.items():
@@ -51,10 +52,24 @@ def sistema():
         opc = leiaInt('Sua Opção: ')
         linha()
 
-        if opc in (1, 2, 3):
+        if opc in (1, 2, 3, 4):
             return opc
 
         print(f"{cores["vermelho"]}Opção Inválida! Tente novamente.{cores["limpa"]}")
+
+def opc_busca():
+    print("OPÇÕES DE BUSCA:")
+    print("1: Buscar medicamento por ID")
+    print("2: Buscar medicamento por nome")
+    opc_selecionada = leiaInt("De que maneira deseja buscar? ")
+
+    while opc_selecionada != 1 or 2:
+        print(f"{cores["vermelho"]}Opção Inválida! Tente novamente.{cores["limpa"]}")
+        opc_selecionada = leiaInt("De que maneira deseja buscar? ")
+
+    if opc_selecionada == 1:
+        return buscar_medicamento_id()
+    return buscar_medicamento_nome()
 
 def encerramento():
     print('Finalizando o sistema', end ='', flush = True)
