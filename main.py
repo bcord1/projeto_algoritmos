@@ -1,4 +1,4 @@
-from Funcoes.Interface.menu import sistema, encerramento, deseja_continuar
+from Funcoes.Interface.menu import sistema, encerramento, deseja_continuar, opc_busca
 from Funcoes.Interface.compra import selecionar_medicamentos, definir_quantidades, mostrar_resumo, confirmar_compra
 from Funcoes.BD.criar_medicamentos import listarMedicamentos, fecharBanco
 from Funcoes.Leitura_Processamento.processamento import processar_receita
@@ -55,13 +55,19 @@ while executando:
         
     elif opc == 2:
         listarMedicamentos()
-        
         if not deseja_continuar():
             encerramento()
             fecharBanco()
             executando = False
 
     elif opc == 3:
+        opc_busca()
+        if not deseja_continuar():
+            encerramento()
+            fecharBanco()
+            executando = False
+
+    elif opc == 4:
         encerramento()
         fecharBanco()
         executando = False
