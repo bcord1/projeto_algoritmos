@@ -1,16 +1,5 @@
 from Funcoes.BD.medicamentos import verificar_estoque
-
-def leiaInt(msg):
-    while True:
-        try:
-            n = int(input(msg))
-        except(TypeError, ValueError):
-            print('Digite uma entrada válida!')
-        except(KeyboardInterrupt):
-            print('Usuário não digitou nada.')
-            return(0)
-        else:
-            return(n)
+from Funcoes.Interface.entrada import leiaInt
 
 def selecionar_medicamentos(medicamentos_receita):
     for indice, medicamento in enumerate(medicamentos_receita, start=1):

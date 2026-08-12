@@ -1,6 +1,6 @@
 import sqlite3
 from pathlib import Path
-from Funcoes.Interface.menu import leiaInt
+from Funcoes.Interface.entrada import leiaInt
 
 caminho_medicamento = Path(__file__).parent / "medicamentos.db"
 

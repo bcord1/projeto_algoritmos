@@ -1,5 +1,6 @@
 from time import sleep
 from Funcoes.BD.medicamentos import buscar_medicamento_nome, buscar_medicamento_id
+from Funcoes.Interface.entrada import leiaInt
 cores = {
 "vermelho":"\033[31m",
 "verde":"\033[32m",
@@ -9,18 +10,6 @@ cores = {
 "ciano":"\033[36m",
 "limpa":"\033[m"
 }
-
-def leiaInt(msg):
-    while True:
-        try:
-            n = int(input(msg))
-        except(TypeError, ValueError):
-            print('Digite uma entrada válida!')
-        except(KeyboardInterrupt):
-            print('Usuário não digitou nada.')
-            return(0)
-        else:
-            return(n)
 
 def linha():
     print('-' * 42)
@@ -63,7 +52,7 @@ def opc_busca():
     print("2: Buscar medicamento por nome")
     opc_selecionada = leiaInt("De que maneira deseja buscar? ")
 
-    while opc_selecionada != 1 or 2:
+    while opc_selecionada != 1 and opc_selecionada !=2:
         print(f"{cores["vermelho"]}Opção Inválida! Tente novamente.{cores["limpa"]}")
         opc_selecionada = leiaInt("De que maneira deseja buscar? ")
 
