@@ -1,5 +1,5 @@
 from time import sleep
-from Funcoes.BD.criar_medicamentos import fecharBanco
+
 cores = {
 "vermelho":"\033[31m",
 "verde":"\033[32m",
@@ -67,7 +67,7 @@ def deseja_continuar():
     loop = True
     while loop:
         try:
-            continuar = input('\nDeseja continuar? [S/N] ').strip().upper()
+            continuar = input('\nDeseja voltar ao menu? [S/N] ').strip().upper()
         except(TypeError):
             print('Entrada inválida.')
         except(KeyboardInterrupt):

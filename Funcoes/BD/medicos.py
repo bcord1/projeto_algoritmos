@@ -10,10 +10,22 @@ def validar_medico(crm, uf):
 
     cursor.execute("""
         SELECT * FROM medicos
-        WHERE crm = ? AND uf = ?
-    """, (crm, uf))
+        WHERE crm = ?
+    """, (crm,))
+    crm_existe = cursor.fetchone() is not None
 
-    resultado = cursor.fetchone
+    if not crm_existe:
+        conexao.close()
+        return "crm_invalido"
+
+    cursor.execute("""
+            SELECT * FROM medicos
+            WHERE crm = ? AND uf = ?
+        """, (crm, uf))
+    uf_valida = cursor.fetchone() is not None
     conexao.close()
 
-    return resultado is not None
+    if not uf_valida:
+        return "uf_invalida"
+
+    return "valido"
