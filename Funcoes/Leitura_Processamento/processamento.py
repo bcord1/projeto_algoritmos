@@ -11,6 +11,7 @@ def processar_receita():
     texto = extrair_texto(imagem)
     dados = extrair_dados_receita(texto)
     dados["texto_bruto"] = texto
+<<<<<<< HEAD
     return dados
 
 # dados_receita = processar_receita()
@@ -34,3 +35,6 @@ def processar_receita():
 #         print("Receita Validada com sucesso!")
 #     else:
 #         print("Receita Inválida!")
+=======
+    return dados
+>>>>>>> Verificação-de-CRM-lido-errado

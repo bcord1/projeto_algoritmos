@@ -1,5 +1,5 @@
 from time import sleep
-from Funcoes.BD.criar_medicamentos import fecharBanco
+
 cores = {
 "vermelho":"\033[31m",
 "verde":"\033[32m",
@@ -67,7 +67,7 @@ def deseja_continuar():
     loop = True
     while loop:
         try:
-            continuar = input('Deseja continuar? [S/N] ').strip().upper()
+            continuar = input('\nDeseja voltar ao menu? [S/N] ').strip().upper()
         except(TypeError):
             print('Entrada inválida.')
         except(KeyboardInterrupt):
@@ -78,4 +78,23 @@ def deseja_continuar():
             elif continuar == 'N':
                 return False
             else:
+<<<<<<< HEAD
                 print('Opção inválida! Digite S ou N.')
+=======
+                print('Opção inválida, digite S ou N.')
+
+def decidir_apos_quantidade():
+    linha()
+    print('1 - Ir para o menu e adicionar outra receita à compra')
+    print('2 - Finalizar a compra atual')
+    linha()
+    while True:
+        opcao = leiaInt('Sua opção: ')
+        if opcao == 1:
+            print()
+            return True
+        elif opcao == 2:
+            linha()
+            return False
+        print(f'{cores["vermelho"]}Opção Inválida! Tente Novamente.{cores["limpa"]}')
+>>>>>>> Verificação-de-CRM-lido-errado

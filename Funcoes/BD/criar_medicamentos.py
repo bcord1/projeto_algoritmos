@@ -2,7 +2,6 @@ import sqlite3
 from pathlib import Path
 
 caminho_banco = Path(__file__).parent / "medicamentos.db" 
-#Abre o arquivo medicamentos.db no diretório atual de execução do Python
 
 medicamentos = sqlite3.connect(caminho_banco)
 
