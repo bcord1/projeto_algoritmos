@@ -99,8 +99,8 @@ medicamentos.commit()
 def listarMedicamentos():
     cursor.execute("SELECT * FROM medicamentos")
     resultados = cursor.fetchall()
-    for linha in resultados:
-        print(linha)
+    for id_medicamento, nome, quantidade in resultados:
+        print(f'{id_medicamento} - {nome} - {quantidade}')
 
 def fecharBanco():
     medicamentos.close()
