@@ -16,32 +16,6 @@ def validar_medico(crm, uf):
     conexao = sqlite3.connect(caminho_medico)
     cursor = conexao.cursor()
 
-<<<<<<< HEAD
-    cursor.execute("SELECT * FROM medicos WHERE crm = ?", (crm,))
-    resultados = cursor.fetchall()
-
-    for linha in resultados:
-        if linha[0] == crm_receita:
-            crm_encontrado = True
-            print(f"Encontrei um CRM igual! UF cadastrada", linha[1])
-
-            if linha[1] == uf_receita:
-                uf_encontrado = True
-                print(f"Encontrei uma UF igual!")
-
-    if not crm_encontrado:
-        print("Não encontrei um CRM igual no sistema!")
-    if not uf_encontrado:
-        print("Não encontrei um UF igual para o CRM informado!")
-
-    if uf_encontrado:
-        print("Validação Concluida com sucesso!")
-    else:
-        print("CRM Inválido!")
-
-    conexao.close()
-    return uf_encontrado
-=======
     cursor.execute("""
         SELECT * FROM medicos
         WHERE crm = ?
@@ -63,4 +37,3 @@ def validar_medico(crm, uf):
         return "uf_invalida"
 
     return "valido"
->>>>>>> Verificação-de-CRM-lido-errado

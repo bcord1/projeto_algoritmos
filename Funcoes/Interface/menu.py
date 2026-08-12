@@ -78,9 +78,6 @@ def deseja_continuar():
             elif continuar == 'N':
                 return False
             else:
-<<<<<<< HEAD
-                print('Opção inválida! Digite S ou N.')
-=======
                 print('Opção inválida, digite S ou N.')
 
 def decidir_apos_quantidade():
@@ -97,4 +94,3 @@ def decidir_apos_quantidade():
             linha()
             return False
         print(f'{cores["vermelho"]}Opção Inválida! Tente Novamente.{cores["limpa"]}')
->>>>>>> Verificação-de-CRM-lido-errado
