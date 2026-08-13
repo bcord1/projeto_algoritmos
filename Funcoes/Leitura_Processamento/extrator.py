@@ -1,4 +1,3 @@
-import re
 from .config import padrao_crm_uf, padrao_medicamento
 
 

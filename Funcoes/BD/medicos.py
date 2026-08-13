@@ -7,11 +7,6 @@ def validar_medico(crm, uf):
     if crm is False or uf is False:
         return False
 
-    crm_receita = str(crm).strip()
-    uf_receita = str(uf).strip()
-    
-    crm_encontrado = False
-    uf_encontrado = False
 
     conexao = sqlite3.connect(caminho_medico)
     cursor = conexao.cursor()
