@@ -1,7 +1,9 @@
 import sqlite3
 from pathlib import Path
+from .criar_medicos import criar_medicos
 
 caminho_medico = Path(__file__).parent / "medicos.db"
+criar_medicos()
 
 def validar_medico(crm, uf):
     if crm is False or uf is False:

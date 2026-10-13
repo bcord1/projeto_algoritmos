@@ -10,5 +10,4 @@ def processar_receita():
     imagem = processar_imagem(caminho)
     texto = extrair_texto(imagem)
     dados = extrair_dados_receita(texto)
-    dados["texto_bruto"] = texto
     return dados

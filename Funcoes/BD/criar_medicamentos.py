@@ -99,6 +99,7 @@ medicamentos.commit()
 def listarMedicamentos():
     cursor.execute("SELECT * FROM medicamentos")
     resultados = cursor.fetchall()
+
     for id_medicamento, nome, quantidade in resultados:
         print(f'{id_medicamento} - {nome} - {quantidade}')
 
