@@ -47,8 +47,7 @@ ehthumbs.db
 *.log
 *.sqlite3
 *.sqlite3-journal
-# Se o medicamentos.db for apenas local/dinâmico, descomente a linha abaixo:
-# medicamentos.db
+*.db
 
 # ==========================================
 # DISTRIBUIÇÃO E TEMPORÁRIOS

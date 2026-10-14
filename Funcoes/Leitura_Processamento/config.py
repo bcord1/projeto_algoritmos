@@ -1,6 +1,8 @@
 import re
 
-Tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+Tesseract_cmd = r"/usr/bin/tesseract"
+# Windows:
+# r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 unidades = (r"(?P<unidade>caixas?|comprimidos?|c[áa]psulas?|frascos?|ampolas?|tubos?|unidades?|gotas?)")
 
